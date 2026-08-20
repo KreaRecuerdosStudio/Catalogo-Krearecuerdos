@@ -412,6 +412,12 @@
       .contact-columns { grid-template-columns: 1fr; gap: 24px; }
       .nav-indicator { display: none; }
       .drawer-content { padding: 24px; }
+      
+      /* Hide secondary header actions on mobile to fit primary actions */
+      .header-actions a[href*="instagram"],
+      .header-actions button[onclick*="drawer-socios"] {
+        display: none !important;
+      }
     }
 
     /* ── PRINT & PDF EXPORT STYLES ───────────────────────────────── */
@@ -1130,7 +1136,8 @@
           
           <div style="margin-top: 18px; text-align: center;">
             <p style="font-size: 0.76rem; color: var(--gray); margin-bottom: 8px;">¿Quieres ver videos de nuestros procesos?</p>
-            <a href="https://instagram.com/krearecuerdosstudio" target="_blank" class="btn-action btn-action-secondary" style="width: 100%; justify-content: center;">📸 Visita nuestro Instagram para ver más reels</a>
+            <a href="https://instagram.com/krearecuerdosstudio" target="_blank" class="btn-action btn-action-secondary" style="width: 100%; justify-content: center; margin-bottom: 8px;">📸 Visita nuestro Instagram para ver más reels</a>
+            <button onclick="toggleDrawer('drawer-socios')" class="btn-action btn-action-secondary" style="width: 100%; justify-content: center;">🤝 Portal de Socios (Mayoristas)</button>
           </div>
         </div>
 
