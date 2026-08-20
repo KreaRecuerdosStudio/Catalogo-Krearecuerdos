@@ -505,12 +505,13 @@
   <!-- ── HEADER & NAVIGATION ── -->
   <header>
     <div class="header-container">
-      <a href="#page-portada"><img src="logo.png" alt="Krea Recuerdos" class="header-logo" /></a>
+      <a href="#page-portada"><img src="catalogo_assets/logo.png" alt="Krea Recuerdos" class="header-logo" /></a>
       <div class="header-actions">
-        <a href="https://instagram.com/krearecuerdosstudio" target="_blank" class="btn-action btn-action-secondary">📸 Ver Instagram</a>
-        <button onclick="toggleDrawer('drawer-socios')" class="btn-action btn-action-secondary">🤝 Portal Socios</button>
-        <!-- Static HTML link with direct PDF file download for 100% mobile/insta reliability -->
-        <a href="Krea_Recuerdos_Catalogo.pdf" id="btn-descarga-pdf" class="btn-action btn-action-primary" target="_blank">📄 Descargar PDF</a>
+        <a href="https://instagram.com/krearecuerdosstudio" target="_blank" class="btn-action btn-action-secondary">📸 Instagram</a>
+        <button onclick="scrollToPage('page-contacto')" class="btn-action btn-action-primary">🛍️ Haz tu Pedido</button>
+        <button onclick="toggleDrawer('drawer-socios')" class="btn-action btn-action-secondary">🤝 Socios</button>
+        <!-- Static HTML link with direct PDF file download inside catalogo_assets for 100% reliability -->
+        <a href="catalogo_assets/Krea_Recuerdos_Catalogo.pdf" id="btn-descarga-pdf" class="btn-action btn-action-primary" target="_blank">📄 Descargar PDF</a>
       </div>
     </div>
   </header>
@@ -526,6 +527,7 @@
     <div class="nav-dot" data-target="page-mini-pinatas" data-title="Mini Piñatas"></div>
     <div class="nav-dot" data-target="page-decoracion" data-title="Dulceros & Cajas"></div>
     <div class="nav-dot" data-target="page-decoracion-mas" data-title="Más Decoración"></div>
+    <div class="nav-dot" data-target="page-tricotin" data-title="Tricotin Decorativo"></div>
     <div class="nav-dot" data-target="page-politicas" data-title="Políticas de Reserva"></div>
     <div class="nav-dot" data-target="page-contacto" data-title="Contacto & Cotizar"></div>
   </div>
@@ -536,7 +538,7 @@
     <!-- PORTADA (COVER PAGE) -->
     <section id="page-portada" class="catalog-page page-cover">
       <div class="cover-inner">
-        <img src="logo.png" alt="Krea Recuerdos Logo" class="cover-logo" />
+        <img src="catalogo_assets/logo.png" alt="Krea Recuerdos Logo" class="cover-logo" />
         <div class="cover-title-box">
           <span class="cover-subtitle">Estudio Creativo Guatemalteco</span>
           <h2 class="cover-title">Catálogo de Productos<br/>& Servicios</h2>
@@ -861,7 +863,7 @@
           </div>
 
           <!-- Replaced duplicated Anxiety piñata with a custom request banner as directed -->
-          <div class="prod-item-2-col" style="justify-content: center; align-items: center; border: 1.5px dashed var(--gold); border-radius: 4px; padding: 24px; text-align: center; background: var(--pink-light); aspect-ratio: 1.25 / 1;">
+          <div class="prod-item-2-col" style="justify-content: center; align-items: center; border: 1.5px dashed var(--gold); border-radius: 4px; padding: 24px; text-align: center; background: var(--pink-light); width: 100%; height: 100%;">
             <span style="font-size: 2.2rem; display: block; margin-bottom: 8px;">🎨</span>
             <h4 class="prod-item-2-col-title" style="color: var(--pink); font-family: var(--font-serif); font-size: 0.95rem;">¡La temática que desees!</h4>
             <p class="prod-item-2-col-desc" style="max-width: 320px; line-height: 1.5; color: var(--gray); font-size: 0.74rem;">Elaboramos cualquier personaje, temática, diseño o tamaño de piñata completamente a tu gusto y medida.</p>
@@ -999,7 +1001,59 @@
       </div>
     </section>
 
-    <!-- PÁG 09: POLÍTICAS DE RESERVA (SPLIT TO PREVENT OVERFLOW & PDF CUT-OFF) -->
+    <!-- PÁG 09: TRICOTIN DECORATIVO PARA CUARTOS -->
+    <section id="page-tricotin" class="catalog-page">
+      <div class="page-header">
+        <span class="page-header-logo">Krea Recuerdos</span>
+        <span class="page-header-title">Tricotín Decorativo</span>
+      </div>
+      <div>
+        <h3 class="page-title">Nombres & Figuras en Tricotín</h3>
+        <p class="page-desc">Nombres y formas modeladas enteramente a mano con cordón de algodón y alma de alambre. El detalle ideal para la decoración de dormitorios infantiles, baby showers o eventos especiales.</p>
+        
+        <div class="prod-grid-2-col">
+          
+          <div class="prod-item-2-col">
+            <div class="prod-item-2-col-img-box" onclick="openLightboxSrc('tricotin_diego_cohete.jpg')">
+              <img src="tricotin_diego_cohete.jpg" alt="Nombre Diego con Cohete" />
+            </div>
+            <h4 class="prod-item-2-col-title">Temática Espacial (Diego)</h4>
+            <p class="prod-item-2-col-desc">Nombre tejido en tricotín con cohete y planetas a juego.</p>
+          </div>
+
+          <div class="prod-item-2-col">
+            <div class="prod-item-2-col-img-box" onclick="openLightboxSrc('tricotin_ana_animales.jpg')">
+              <img src="tricotin_ana_animales.jpg" alt="Nombre Ana safari" />
+            </div>
+            <h4 class="prod-item-2-col-title">Temática Safari (Ana)</h4>
+            <p class="prod-item-2-col-desc">Nombre personalizado con tiernos animales de selva en auto.</p>
+          </div>
+
+          <div class="prod-item-2-col">
+            <div class="prod-item-2-col-img-box" onclick="openLightboxSrc('tricotin_lucas_oso.jpg')">
+              <img src="tricotin_lucas_oso.jpg" alt="Nombre Lucas con Oso" />
+            </div>
+            <h4 class="prod-item-2-col-title">Silueta de Bosque (Lucas)</h4>
+            <p class="prod-item-2-col-desc">Oso y pinos tejidos en lana, ideal para cuartos de bebé.</p>
+          </div>
+
+          <div class="prod-item-2-col">
+            <div class="prod-item-2-col-img-box" onclick="openLightboxSrc('tricotin_lucas_pared.jpg')">
+              <img src="tricotin_lucas_pared.jpg" alt="Silueta Lucas y Pinos" />
+            </div>
+            <h4 class="prod-item-2-col-title">Decoración Infantil Completa</h4>
+            <p class="prod-item-2-col-desc">Diseños montados que combinan con papel tapiz y vinilos.</p>
+          </div>
+
+        </div>
+      </div>
+      <div class="page-footer">
+        <span>Diseños hechos 100% a mano con amor</span>
+        <span class="page-footer-num">Pág. 09</span>
+      </div>
+    </section>
+
+    <!-- PÁG 10: POLÍTICAS DE RESERVA (SPLIT TO PREVENT OVERFLOW & PDF CUT-OFF) -->
     <section id="page-politicas" class="catalog-page">
       <div class="page-header">
         <span class="page-header-logo">Krea Recuerdos</span>
@@ -1034,7 +1088,7 @@
       </div>
       <div class="page-footer">
         <span>Condiciones para un servicio impecable</span>
-        <span class="page-footer-num">Pág. 09</span>
+        <span class="page-footer-num">Pág. 10</span>
       </div>
     </section>
 
@@ -1109,6 +1163,7 @@
                 <option>Piñatas artesanales / Minis</option>
                 <option>Dulceros & Cajas sorpresa</option>
                 <option>Globos & Decoración de mesa</option>
+                <option>Tricotín decorativo para cuartos</option>
                 <option>Otro detalle</option>
               </select>
             </div>
@@ -1124,7 +1179,7 @@
 
       <div class="page-footer">
         <span>© 2026 Krea Recuerdos · Todos los derechos reservados</span>
-        <span class="page-footer-num">Pág. 10</span>
+        <span class="page-footer-num">Pág. 11</span>
       </div>
     </section>
 
@@ -1170,6 +1225,7 @@
               <option>Caja / Bolsa sorpresa</option>
               <option>Decoración para evento</option>
               <option>Textiles en blanco / estampados</option>
+              <option>Nombres & Figuras en Tricotín</option>
               <option>Otro</option>
             </select>
           </div>
@@ -1276,6 +1332,17 @@
     function closeDrawerOnBg(e, id) {
       if (e.target === document.getElementById(id)) {
         toggleDrawer(id);
+      }
+    }
+
+    // SMOOTH SCROLL TO PAGE
+    function scrollToPage(id) {
+      const target = document.getElementById(id);
+      if (target) {
+        window.scrollTo({
+          top: target.offsetTop - 90,
+          behavior: 'smooth'
+        });
       }
     }
 
