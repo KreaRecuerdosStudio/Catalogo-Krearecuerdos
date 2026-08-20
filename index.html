@@ -199,29 +199,15 @@
     .prod-item-2-col-desc { font-size: 0.82rem; color: var(--gray); line-height: 1.45; margin-bottom: 8px; }
     .prod-item-2-col-price { font-size: 0.8rem; font-weight: 700; color: var(--gold); margin-top: auto; }
 
-    /* 8-Grid Product List for Piñatas (4 columns x 2 rows) */
-    .prod-grid-8 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 18px 12px; }
-    .prod-item-grid-small { display: flex; flex-direction: column; text-align: center; }
-    .prod-item-grid-small .prod-item-grid-img-box { 
-      width: 100%; aspect-ratio: 1/1; margin-bottom: 8px; border-radius: 4px;
-      border: 1px solid rgba(197, 168, 128, 0.15); background: #fff;
-      display: flex; align-items: center; justify-content: center; cursor: pointer;
-      overflow: hidden;
-    }
-    .prod-item-grid-small .prod-item-grid-img-box img { max-width: 100%; max-height: 100%; object-fit: contain; display: block; transition: transform 0.4s ease; }
-    .prod-item-grid-small .prod-item-grid-img-box:hover img { transform: scale(1.04); }
-    .prod-item-grid-small .prod-item-grid-title { font-size: 0.76rem; font-weight: 600; margin-bottom: 2px; line-height: 1.25; color: var(--dark); }
-    .prod-item-grid-small .prod-item-grid-desc { font-size: 0.65rem; color: var(--gray); line-height: 1.3; }
-
-    /* Product Grid for Mugs */
+    /* Product Grid for Mugs - Optimized height to prevent overlap */
     .prod-grid-mugs-clean {
-      display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; margin-bottom: 24px;
+      display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-bottom: 24px;
     }
     .mug-clean-card {
       display: flex; flex-direction: column; align-items: center;
     }
     .mug-clean-img-box {
-      width: 100%; aspect-ratio: 1.1 / 1; overflow: hidden; border-radius: 4px;
+      width: 100%; height: 140px; overflow: hidden; border-radius: 4px;
       border: 1.5px solid rgba(197, 168, 128, 0.2); background: #FFFFFF;
       display: flex; align-items: center; justify-content: center; cursor: pointer;
     }
@@ -285,7 +271,7 @@
       font-size: 0.85rem; color: var(--dark); font-weight: 500; line-height: 1.5;
     }
 
-    /* ── PAGE 08 SPECIFIC: CONTACT & BACK COVER ── */
+    /* ── PAGE 10 SPECIFIC: CONTACT & BACK COVER ── */
     .contact-columns { display: grid; grid-template-columns: 1fr 1.25fr; gap: 35px; align-items: start; }
     .contact-info-col h4 { font-family: var(--font-serif); font-size: 1.3rem; margin-bottom: 14px; }
     .contact-info-col p { font-size: 0.85rem; color: var(--gray); line-height: 1.6; margin-bottom: 20px; }
@@ -416,7 +402,6 @@
       .prod-list-3 { grid-template-columns: 1fr; gap: 24px; }
       .prod-item-img-box { aspect-ratio: 16/10; }
       .prod-grid-2-col { grid-template-columns: 1fr; gap: 24px; }
-      .prod-grid-8 { grid-template-columns: 1fr 1fr; gap: 16px 12px; }
       .prod-grid-mugs-clean { grid-template-columns: 1fr 1fr; gap: 16px; }
       
       .textiles-showcase-container { grid-template-columns: 1fr; gap: 16px; }
@@ -488,12 +473,6 @@
         gap: 24px 20px !important;
       }
 
-      .prod-grid-8 {
-        display: grid !important;
-        grid-template-columns: repeat(4, 1fr) !important;
-        gap: 14px 10px !important;
-      }
-
       .prod-grid-mugs-clean {
         display: grid !important;
         grid-template-columns: repeat(3, 1fr) !important;
@@ -530,23 +509,25 @@
       <div class="header-actions">
         <a href="https://instagram.com/krearecuerdosstudio" target="_blank" class="btn-action btn-action-secondary">📸 Ver Instagram</a>
         <button onclick="toggleDrawer('drawer-socios')" class="btn-action btn-action-secondary">🤝 Portal Socios</button>
-        <!-- Calls handlePDFDownload to intelligently open PDF file on mobile or print on desktop -->
-        <button onclick="handlePDFDownload()" class="btn-action btn-action-primary">📄 Descargar PDF</button>
+        <!-- Static HTML link with direct PDF file download for 100% mobile/insta reliability -->
+        <a href="Krea_Recuerdos_Catalogo.pdf" id="btn-descarga-pdf" class="btn-action btn-action-primary" target="_blank">📄 Descargar PDF</a>
       </div>
     </div>
   </header>
 
-  <!-- ── NAV DOTS NAVIGATION ── -->
+  <!-- ── NAV DOTS NAVIGATION (11 PAGES) ── -->
   <div class="nav-indicator">
     <div class="nav-dot active" data-target="page-portada" data-title="Portada"></div>
     <div class="nav-dot" data-target="page-talleres" data-title="Talleres de Pintura"></div>
     <div class="nav-dot" data-target="page-textiles" data-title="Textiles a Personalizar"></div>
     <div class="nav-dot" data-target="page-eventos" data-title="Eventos en Vivo"></div>
     <div class="nav-dot" data-target="page-recuerdos" data-title="Recuerdos Personalizados"></div>
-    <div class="nav-dot" data-target="page-pinatas" data-title="Piñatas & Minis"></div>
+    <div class="nav-dot" data-target="page-pinatas" data-title="Piñatas Grandes"></div>
+    <div class="nav-dot" data-target="page-mini-pinatas" data-title="Mini Piñatas"></div>
     <div class="nav-dot" data-target="page-decoracion" data-title="Dulceros & Cajas"></div>
     <div class="nav-dot" data-target="page-decoracion-mas" data-title="Más Decoración"></div>
-    <div class="nav-dot" data-target="page-contacto" data-title="Cotizar / Contacto"></div>
+    <div class="nav-dot" data-target="page-politicas" data-title="Políticas de Reserva"></div>
+    <div class="nav-dot" data-target="page-contacto" data-title="Contacto & Cotizar"></div>
   </div>
 
   <!-- ── CATALOG PAGES WRAPPER ── -->
@@ -729,7 +710,7 @@
       </div>
     </section>
 
-    <!-- PÁG 04: RECUERDOS PERSONALIZADOS - TAZAS DE PORCELANA -->
+    <!-- PÁG 04: RECUERDOS PERSONALIZADOS - TAZAS DE PORCELANA (STYLING FIXED TO PREVENT OVERLAP) -->
     <section id="page-recuerdos" class="catalog-page">
       <div class="page-header">
         <span class="page-header-logo">Krea Recuerdos</span>
@@ -739,6 +720,7 @@
         <h3 class="page-title">Recuerdos Personalizados (Tazas de Porcelana Fría)</h3>
         <p class="page-desc">Nuestra gran especialidad: tazas de porcelana modeladas enteramente a mano en 3D con figuras de tus adoradas mascotas o personajes predilectos.</p>
         
+        <!-- Grid layout displaying only beautiful uncropped images as requested -->
         <div class="prod-grid-mugs-clean">
           
           <div class="mug-clean-card">
@@ -772,9 +754,9 @@
           </div>
 
           <!-- Elegant Gold Callout Box to complete the grid -->
-          <div class="mug-clean-card" style="justify-content: center; align-items: center; border: 1.5px dashed var(--gold); border-radius: 4px; padding: 16px; text-align: center; background: var(--pink-light); aspect-ratio: 1.1 / 1;">
-            <span style="font-size: 1.8rem; display: block; margin-bottom: 6px;">🐾</span>
-            <p style="font-size: 0.76rem; font-weight: 600; color: var(--pink); line-height: 1.35; margin: 0;">Detalles esculpidos a mano y moldeados con amor</p>
+          <div class="mug-clean-card" style="justify-content: center; align-items: center; border: 1.5px dashed var(--gold); border-radius: 4px; padding: 10px; text-align: center; background: var(--pink-light); height: 140px;">
+            <span style="font-size: 1.8rem; display: block; margin-bottom: 2px;">🐾</span>
+            <p style="font-size: 0.76rem; font-weight: 600; color: var(--pink); line-height: 1.35; margin: 0;">Diseño 100% hecho a mano</p>
           </div>
 
         </div>
@@ -790,18 +772,17 @@
       </div>
     </section>
 
-    <!-- PÁG 05: PIÑATAS ARTESANALES -->
+    <!-- PÁG 05: PIÑATAS GRANDES ARTESANALES (SPLIT TO PREVENT OVERFLOW & PDF CUT-OFF) -->
     <section id="page-pinatas" class="catalog-page">
       <div class="page-header">
         <span class="page-header-logo">Krea Recuerdos</span>
-        <span class="page-header-title">Piñatas & Minis</span>
+        <span class="page-header-title">Piñatas Grandes</span>
       </div>
       <div>
-        <h3 class="page-title">Piñatas & Mini Piñatas</h3>
-        <p class="page-desc">Estructuras resistentes hechas 100% a mano con flecos y detalles de papel crepé. Elaboramos piñatas de gran tamaño y mini piñatas sorpresas.</p>
+        <h3 class="page-title">Piñatas Grandes Artesanales</h3>
+        <p class="page-desc">Estructuras resistentes hechas 100% a mano con flecos y detalles de papel crepé. Ideal como decoración central en tu mesa principal.</p>
         
-        <div class="page-section-divider">Piñatas Grandes Artesanales</div>
-        <div class="prod-grid-2-col" style="margin-bottom: 24px;">
+        <div class="prod-grid-2-col">
           
           <div class="prod-item-2-col">
             <div class="prod-item-2-col-img-box" onclick="openLightboxSrc('20240712_165353.jpg_202607121413.jpeg')">
@@ -836,8 +817,23 @@
           </div>
 
         </div>
+      </div>
+      <div class="page-footer">
+        <span>Diseños personalizados bajo pedido</span>
+        <span class="page-footer-num">Pág. 05</span>
+      </div>
+    </section>
 
-        <div class="page-section-divider">Nuevas Mini Piñatas & Especiales</div>
+    <!-- PÁG 06: MINI PIÑATAS & ESPECIALES (SPLIT TO PREVENT OVERFLOW & PDF CUT-OFF) -->
+    <section id="page-mini-pinatas" class="catalog-page">
+      <div class="page-header">
+        <span class="page-header-logo">Krea Recuerdos</span>
+        <span class="page-header-title">Mini Piñatas</span>
+      </div>
+      <div>
+        <h3 class="page-title">Mini Piñatas & Diseños Especiales</h3>
+        <p class="page-desc">Mini piñatas sorpresas con detalles finos de papel metalizado e impresiones de alta definición. Ideales para recuerdos y fiestas.</p>
+        
         <div class="prod-grid-2-col">
 
           <div class="prod-item-2-col">
@@ -865,21 +861,21 @@
           </div>
 
           <!-- Replaced duplicated Anxiety piñata with a custom request banner as directed -->
-          <div class="prod-item-2-col" style="justify-content: center; align-items: center; border: 1.5px dashed var(--gold); border-radius: 4px; padding: 24px; text-align: center; background: var(--pink-light);">
+          <div class="prod-item-2-col" style="justify-content: center; align-items: center; border: 1.5px dashed var(--gold); border-radius: 4px; padding: 24px; text-align: center; background: var(--pink-light); aspect-ratio: 1.25 / 1;">
             <span style="font-size: 2.2rem; display: block; margin-bottom: 8px;">🎨</span>
-            <h4 class="prod-item-2-col-title" style="color: var(--pink); font-family: var(--font-serif);">¡La temática que desees!</h4>
-            <p class="prod-item-2-col-desc" style="max-width: 320px; line-height: 1.5; color: var(--gray);">Elaboramos cualquier personaje, temática, diseño o tamaño de piñata completamente a tu gusto y medida.</p>
+            <h4 class="prod-item-2-col-title" style="color: var(--pink); font-family: var(--font-serif); font-size: 0.95rem;">¡La temática que desees!</h4>
+            <p class="prod-item-2-col-desc" style="max-width: 320px; line-height: 1.5; color: var(--gray); font-size: 0.74rem;">Elaboramos cualquier personaje, temática, diseño o tamaño de piñata completamente a tu gusto y medida.</p>
           </div>
 
         </div>
       </div>
       <div class="page-footer">
         <span>Diseños personalizados bajo pedido</span>
-        <span class="page-footer-num">Pág. 05</span>
+        <span class="page-footer-num">Pág. 06</span>
       </div>
     </section>
 
-    <!-- PÁG 06: DULCEROS & PAPELERÍA CREATIVA -->
+    <!-- PÁG 07: DULCEROS & PAPELERÍA CREATIVA -->
     <section id="page-decoracion" class="catalog-page">
       <div class="page-header">
         <span class="page-header-logo">Krea Recuerdos</span>
@@ -937,11 +933,11 @@
       </div>
       <div class="page-footer">
         <span>Detalles que marcan la diferencia</span>
-        <span class="page-footer-num">Pág. 06</span>
+        <span class="page-footer-num">Pág. 07</span>
       </div>
     </section>
 
-    <!-- PÁG 07: MÁS DETALLES Y DECORACIÓN -->
+    <!-- PÁG 08: MÁS DETALLES Y DECORACIÓN -->
     <section id="page-decoracion-mas" class="catalog-page">
       <div class="page-header">
         <span class="page-header-logo">Krea Recuerdos</span>
@@ -999,11 +995,50 @@
       </div>
       <div class="page-footer">
         <span>Complementos mágicos para tus fiestas</span>
-        <span class="page-footer-num">Pág. 07</span>
+        <span class="page-footer-num">Pág. 08</span>
       </div>
     </section>
 
-    <!-- PÁG 08: COTIZACIÓN & CONTACTO (BACK COVER WITH CUSTOM POLICIES) -->
+    <!-- PÁG 09: POLÍTICAS DE RESERVA (SPLIT TO PREVENT OVERFLOW & PDF CUT-OFF) -->
+    <section id="page-politicas" class="catalog-page">
+      <div class="page-header">
+        <span class="page-header-logo">Krea Recuerdos</span>
+        <span class="page-header-title">Condiciones de Pedido</span>
+      </div>
+      <div>
+        <h3 class="page-title" style="text-align: center; margin-bottom: 40px; font-family: var(--font-serif);">Políticas de Pedido y Tiempos de Reserva</h3>
+        
+        <div style="display: flex; flex-direction: column; gap: 30px; max-width: 650px; margin: 0 auto;">
+          <div style="background: #fafafa; padding: 24px; border-radius: 6px; border: 1.5px solid rgba(197, 168, 128, 0.15); display: flex; gap: 20px; align-items: flex-start;">
+            <span style="font-size: 2.2rem; line-height: 1;">⏳</span>
+            <div>
+              <h5 style="font-size: 1rem; font-weight: 600; color: var(--gold); margin-bottom: 8px;">Planifica con Tiempo</h5>
+              <p style="font-size: 0.82rem; color: var(--gray); line-height: 1.6;">Todos nuestros productos son elaborados 100% a mano. Te sugerimos reservar con al menos <strong>10 a 15 días de anticipación</strong> para asegurar la fecha de tu entrega y agendar a tiempo.</p>
+            </div>
+          </div>
+          <div style="background: #fafafa; padding: 24px; border-radius: 6px; border: 1.5px solid rgba(197, 168, 128, 0.15); display: flex; gap: 20px; align-items: flex-start;">
+            <span style="font-size: 2.2rem; line-height: 1;">📐</span>
+            <div>
+              <h5 style="font-size: 1rem; font-weight: 600; color: var(--gold); margin-bottom: 8px;">Cotizaciones a Medida</h5>
+              <p style="font-size: 0.82rem; color: var(--gray); line-height: 1.6;">El costo y presupuesto final de cada pedido depende directamente de las dimensiones de las piezas, cantidad de invitados, tipo de evento y la complejidad de la temática.</p>
+            </div>
+          </div>
+          <div style="background: #fafafa; padding: 24px; border-radius: 6px; border: 1.5px solid rgba(197, 168, 128, 0.15); display: flex; gap: 20px; align-items: flex-start;">
+            <span style="font-size: 2.2rem; line-height: 1;">📆</span>
+            <div>
+              <h5 style="font-size: 1rem; font-weight: 600; color: var(--gold); margin-bottom: 8px;">Reservación y Agenda</h5>
+              <p style="font-size: 0.82rem; color: var(--gray); line-height: 1.6;">Dado el volumen de detalles personalizados elaborados para cada cliente, la fecha se reserva y confirma únicamente mediante el anticipo acordado en la cotización.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="page-footer">
+        <span>Condiciones para un servicio impecable</span>
+        <span class="page-footer-num">Pág. 09</span>
+      </div>
+    </section>
+
+    <!-- PÁG 10: COTIZACIÓN & CONTACTO (BACK COVER - CLEANED & EXPANDED) -->
     <section id="page-contacto" class="catalog-page">
       <div class="page-header">
         <span class="page-header-logo">Krea Recuerdos</span>
@@ -1079,36 +1114,17 @@
             </div>
             <div class="form-group">
               <label>Detalle de tu idea *</label>
-              <textarea id="mensaje" placeholder="Ej. Cotización de 15 tote bags en blanco y 15 estuches en blanco..." required></textarea>
+              <textarea id="mensaje" placeholder="Ej. Cotización de 15 tote bags en blanco..." required></textarea>
             </div>
             <button type="submit" class="form-submit">Enviar consulta por WhatsApp</button>
           </form>
-        </div>
-
-        <!-- Custom booking policies and time requirements section as requested -->
-        <div style="grid-column: span 2; margin-top: 35px; border-top: 1.5px solid var(--gold); padding-top: 25px;">
-          <h4 style="font-family: var(--font-serif); font-size: 1.25rem; margin-bottom: 16px; color: var(--dark); text-align: center;">Políticas de Pedido y Tiempos de Reserva</h4>
-          <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px;">
-            <div style="background: #fafafa; padding: 18px; border-radius: 4px; border: 1.5px solid rgba(197, 168, 128, 0.15);">
-              <h5 style="font-size: 0.85rem; font-weight: 600; color: var(--gold); margin-bottom: 6px;">⏳ Planifica con Tiempo</h5>
-              <p style="font-size: 0.74rem; color: var(--gray); line-height: 1.45;">Todos nuestros productos son elaborados 100% a mano. Te sugerimos reservar con al menos <strong>10 a 15 días de anticipación</strong> para asegurar la fecha de tu entrega y agendar a tiempo.</p>
-            </div>
-            <div style="background: #fafafa; padding: 18px; border-radius: 4px; border: 1.5px solid rgba(197, 168, 128, 0.15);">
-              <h5 style="font-size: 0.85rem; font-weight: 600; color: var(--gold); margin-bottom: 6px;">📐 Cotizaciones a Medida</h5>
-              <p style="font-size: 0.74rem; color: var(--gray); line-height: 1.45;">El costo y presupuesto final de cada pedido depende directamente de las dimensiones de las piezas, cantidad de invitados, tipo de evento y la complejidad de la temática.</p>
-            </div>
-            <div style="background: #fafafa; padding: 18px; border-radius: 4px; border: 1.5px solid rgba(197, 168, 128, 0.15);">
-              <h5 style="font-size: 0.85rem; font-weight: 600; color: var(--gold); margin-bottom: 6px;">📆 Reservación y Agenda</h5>
-              <p style="font-size: 0.74rem; color: var(--gray); line-height: 1.45;">Dado el volumen de detalles personalizados elaborados para cada cliente, la fecha se reserva y confirma únicamente mediante el anticipo acordado en la cotización.</p>
-            </div>
-          </div>
         </div>
 
       </div>
 
       <div class="page-footer">
         <span>© 2026 Krea Recuerdos · Todos los derechos reservados</span>
-        <span class="page-footer-num">Pág. 08</span>
+        <span class="page-footer-num">Pág. 10</span>
       </div>
     </section>
 
@@ -1392,20 +1408,16 @@
       window.open(`https://wa.me/50235981326?text=${encodeURIComponent(text)}`, '_blank');
     }
 
-    // INTELlIGENT PDF DOWNLOAD HANDLER
-    function handlePDFDownload() {
+    // BIND EVENT TO PDF BUTTON (ONLY INTERCEPTS ON PC TO TRIGGER PRINT DIALOG, ON MOBILE GOES DIRECTLY TO PDF LINK)
+    document.getElementById('btn-descarga-pdf').addEventListener('click', function(e) {
       const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
-      // FBAN and FBAV are Facebook In-App Browser headers, Instagram is Instagram
       const isInstagram = /Instagram|FBAN|FBAV/i.test(navigator.userAgent);
       
-      if (isInstagram || isMobile) {
-        // Open the static PDF file in a new tab for easy saving/viewing
-        window.open('Krea_Recuerdos_Catalogo.pdf', '_blank');
-      } else {
-        // Use the print dialog (which works perfectly on desktop)
-        window.print();
+      if (!isMobile && !isInstagram) {
+        e.preventDefault(); // Prevents loading the PDF file directly
+        window.print(); // Opens the printing dialog
       }
-    }
+    });
   </script>
 </body>
 </html>
