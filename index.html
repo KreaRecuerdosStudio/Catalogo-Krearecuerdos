@@ -1408,16 +1408,7 @@
       window.open(`https://wa.me/50235981326?text=${encodeURIComponent(text)}`, '_blank');
     }
 
-    // BIND EVENT TO PDF BUTTON (ONLY INTERCEPTS ON PC TO TRIGGER PRINT DIALOG, ON MOBILE GOES DIRECTLY TO PDF LINK)
-    document.getElementById('btn-descarga-pdf').addEventListener('click', function(e) {
-      const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
-      const isInstagram = /Instagram|FBAN|FBAV/i.test(navigator.userAgent);
-      
-      if (!isMobile && !isInstagram) {
-        e.preventDefault(); // Prevents loading the PDF file directly
-        window.print(); // Opens the printing dialog
-      }
-    });
+// Download PDF is a direct static link
   </script>
 </body>
 </html>
