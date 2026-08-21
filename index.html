@@ -1484,9 +1484,7 @@
           mensaje,
           estado: 'nueva'
         });
-        if (sbErr) { alert('⚠️ Error Supabase: ' + sbErr.message); }
-        else { alert('✅ Guardado en Supabase correctamente'); }
-      } catch (err) { alert('⚠️ Error conexión: ' + err.message); }
+      } catch (_) { /* silencioso — WhatsApp abre igual */ }
 
       // 2. Abrir WhatsApp
       let text = `¡Hola! Soy *${nombre}*${telefono ? ' (Cel: ' + telefono + ')' : ''} y me gustaría cotizar:\n\n`;
