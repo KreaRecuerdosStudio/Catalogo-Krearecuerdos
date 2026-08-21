@@ -1174,6 +1174,16 @@
                 <option>Otro detalle</option>
               </select>
             </div>
+            <!-- Foto de referencia — aparece para productos que la necesitan -->
+            <div id="foto-cliente-wrap" class="form-group" style="display:none;">
+              <label>📎 Foto de referencia <span style="font-weight:400;color:#999;">(opcional pero ayuda mucho)</span></label>
+              <div id="foto-cliente-drop" onclick="document.getElementById('foto-cliente-input').click()" style="border:2px dashed #d4a0c0;border-radius:10px;padding:18px;text-align:center;cursor:pointer;background:#fdf3f7;transition:border-color .2s;">
+                <div id="foto-cli-placeholder" style="font-size:13px;color:#b07090;">🖼️ Haz clic para subir imagen de referencia · Máx 5MB</div>
+                <img id="foto-cli-preview" src="" alt="preview" style="display:none;max-height:110px;border-radius:6px;margin:0 auto;">
+              </div>
+              <input type="file" id="foto-cliente-input" accept="image/*" style="display:none;" onchange="previsualizarFotoCliente(this)">
+            </div>
+
             <div class="form-group">
               <label>Detalle de tu idea *</label>
               <textarea id="mensaje" placeholder="Ej. Cotización de 15 tote bags en blanco..." required></textarea>
@@ -1465,6 +1475,26 @@
     });
 
     // SEND COTIZACIÓN: guarda en Supabase + abre WhatsApp
+    // Productos que requieren foto de referencia
+    const PRODUCTOS_CON_FOTO = ['Tazas de porcelana fría','Tumbler personalizado','Textiles en blanco (DTF/Eventos)'];
+
+    // Mostrar/ocultar campo foto según producto seleccionado
+    document.getElementById('producto').addEventListener('change', function() {
+      const wrap = document.getElementById('foto-cliente-wrap');
+      wrap.style.display = PRODUCTOS_CON_FOTO.includes(this.value) ? 'block' : 'none';
+    });
+
+    function previsualizarFotoCliente(input) {
+      if (!input.files || !input.files[0]) return;
+      const reader = new FileReader();
+      reader.onload = e => {
+        document.getElementById('foto-cli-preview').src = e.target.result;
+        document.getElementById('foto-cli-preview').style.display = 'block';
+        document.getElementById('foto-cli-placeholder').style.display = 'none';
+      };
+      reader.readAsDataURL(input.files[0]);
+    }
+
     async function sendToWhatsApp(e) {
       e.preventDefault();
       const btn    = e.target.querySelector('button[type="submit"]');
@@ -1473,15 +1503,27 @@
       const producto = document.getElementById('producto').value;
       const fecha    = document.getElementById('fecha').value;
       const mensaje  = document.getElementById('mensaje').value.trim();
+      const fotoFile = document.getElementById('foto-cliente-input').files[0];
 
-      // 1. Guardar en Supabase (no bloqueante — si falla igual abre WhatsApp)
+      // 1. Subir foto si existe y guardar en Supabase
       try {
-        const { error: sbErr } = await sb.from('solicitudes_clientes').insert({
+        let foto_url = null;
+        if (fotoFile) {
+          const ext  = fotoFile.name.split('.').pop();
+          const path = `clientes/${Date.now()}.${ext}`;
+          const { error: upErr } = await sb.storage.from('fotos-solicitudes').upload(path, fotoFile);
+          if (!upErr) {
+            const { data: urlData } = sb.storage.from('fotos-solicitudes').getPublicUrl(path);
+            foto_url = urlData.publicUrl;
+          }
+        }
+        await sb.from('solicitudes_clientes').insert({
           nombre,
           telefono: telefono || null,
           fecha_evento: fecha || null,
           producto,
           mensaje,
+          foto_url,
           estado: 'nueva'
         });
       } catch (_) { /* silencioso — WhatsApp abre igual */ }
