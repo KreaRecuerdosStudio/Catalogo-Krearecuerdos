@@ -1285,8 +1285,8 @@
   <!-- ── VANILLA JAVASCRIPT LOGIC ── -->
   <script>
     // ── SUPABASE CONFIG ──
-    const SUPABASE_URL = 'TU_SUPABASE_URL';   
-    const SUPABASE_KEY = 'TU_ANON_KEY';       
+    const SUPABASE_URL = 'https://ihwduecejspzvdkixndp.supabase.co';
+    const SUPABASE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imlod2R1ZWNlanNwenZka2l4bmRwIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODcyNjY0NjAsImV4cCI6MjEwMjg0MjQ2MH0.lUC-VrPwLJjF2VH1F9lLDkTDw_jsU0AqY0AdIpaRTuI';       
     const sb = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
 
     let socioActual = null;
@@ -1464,22 +1464,41 @@
       } 
     });
 
-    // SEND COTIZACIÓN TO WHATSAPP
-    function sendToWhatsApp(e) {
+    // SEND COTIZACIÓN: guarda en Supabase + abre WhatsApp
+    async function sendToWhatsApp(e) {
       e.preventDefault();
+      const btn    = e.target.querySelector('button[type="submit"]');
       const nombre   = document.getElementById('nombre').value.trim();
       const telefono = document.getElementById('telefono').value.trim();
       const producto = document.getElementById('producto').value;
       const fecha    = document.getElementById('fecha').value;
       const mensaje  = document.getElementById('mensaje').value.trim();
-      
+
+      // 1. Guardar en Supabase (no bloqueante — si falla igual abre WhatsApp)
+      try {
+        const { error: sbErr } = await sb.from('solicitudes_clientes').insert({
+          nombre,
+          telefono: telefono || null,
+          fecha_evento: fecha || null,
+          producto,
+          mensaje,
+          estado: 'nueva'
+        });
+        if (sbErr) { alert('⚠️ Error Supabase: ' + sbErr.message); }
+        else { alert('✅ Guardado en Supabase correctamente'); }
+      } catch (err) { alert('⚠️ Error conexión: ' + err.message); }
+
+      // 2. Abrir WhatsApp
       let text = `¡Hola! Soy *${nombre}*${telefono ? ' (Cel: ' + telefono + ')' : ''} y me gustaría cotizar:\n\n`;
       text += `*Producto:* ${producto}\n`;
       if (fecha) text += `*Fecha requerida:* ${fecha}\n`;
       text += `*Idea:* ${mensaje}\n\n`;
       text += `_(Consulta enviada desde el Catálogo Editorial de Krea Recuerdos)_`;
-      
+
       window.open(`https://wa.me/50235981326?text=${encodeURIComponent(text)}`, '_blank');
+
+      // 3. Confirmar al usuario
+      if (btn) { btn.textContent = '✅ ¡Enviado!'; setTimeout(() => { btn.textContent = 'Enviar consulta por WhatsApp'; e.target.reset(); }, 3000); }
     }
 
 // Download PDF is a direct static link
